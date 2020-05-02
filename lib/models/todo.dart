@@ -3,10 +3,11 @@ import 'package:uuid/uuid.dart';
 class Todo {
   String id;
   String title;
+  String name;
   DateTime dueDate;
   String note;
 
-  Todo(this.title, this. dueDate, this.note);
+  Todo(this.title, this.name, this. dueDate, this.note);
   Todo.newTodo() {
     title = "";
     dueDate = DateTime.now();
@@ -14,7 +15,7 @@ class Todo {
   }
 
   Todo clone() {
-    Todo newTodo = Todo(title, dueDate, note);
+    Todo newTodo = Todo(title, name, dueDate, note);
     newTodo.id = id;
     return newTodo;
   }

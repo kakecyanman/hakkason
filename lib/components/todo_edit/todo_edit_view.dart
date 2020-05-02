@@ -19,6 +19,7 @@ class TodoEditView extends StatelessWidget {
     // 新しいインスタンスを作る
     _newTodo.id = todo.id;
     _newTodo.title = todo.title;
+    _newTodo.name = todo.name;
     _newTodo.dueDate = todo.dueDate;
     _newTodo.note = todo.note;
   }
@@ -32,6 +33,7 @@ class TodoEditView extends StatelessWidget {
         child: Column(
           children: <Widget>[
             _titleTextFormField(),
+            _nameTextFormField(),
             _dueDateTimeFormField(),
             _noteTextFormField(),
             _confirmButton(context)
@@ -40,15 +42,24 @@ class TodoEditView extends StatelessWidget {
       )
     );
   }
-
   Widget _titleTextFormField() => TextFormField(
     decoration: InputDecoration(labelText: "タイトル"),
     initialValue: _newTodo.title,
     onChanged: _setTitle,
   );
-  
+
   void _setTitle(String title) {
     _newTodo.title = title;
+  }
+
+  Widget _nameTextFormField() => TextFormField(
+    decoration: InputDecoration(labelText: "投稿者"),
+    initialValue: _newTodo.name,
+    onChanged: _setName,
+  );
+
+  void _setName(String name) {
+    _newTodo.name = name;
   }
 
   // ↓ https://pub.dev/packages/datetime_picker_formfield のサンプルから引用
